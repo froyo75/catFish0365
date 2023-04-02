@@ -76,16 +76,14 @@ func GetAccessRefreshTokens(clientid string, resource string, respjson map[strin
 			tokens["access_token"] = respjson["access_token"].(string)
 			tokens["refresh_token"] = respjson["refresh_token"].(string)
 			return tokens
-		} else {
-			if val, ok := respjson["error_description"]; ok {
-				error_description := val.(string)
-				if strings.Contains(error_description, "polling") {
-					time.Sleep(time.Duration(interval) * time.Second)
-					total += interval
-				} else {
-					log.Error().Msg("[!] Error: " + error_description)
-					return nil
-				}
+		} else if val, ok := respjson["error_description"]; ok {
+			error_description := val.(string)
+			if strings.Contains(error_description, "polling") {
+				time.Sleep(time.Duration(interval) * time.Second)
+				total += interval
+			} else {
+				log.Error().Msg("[!] Error: " + error_description)
+				return nil
 			}
 		}
 	}
@@ -115,12 +113,9 @@ func GetAccessTokenFromResfreshToken(clientid string, resource string, scope str
 		tokens["refresh_token"] = respjson["refresh_token"].(string)
 		log.Debug().Msg("[*] Successfully got a new access token !")
 		return tokens
-	} else {
-		if val, ok := respjson["error_description"]; ok {
-			error_description := val.(string)
-			log.Error().Msg("[!] Error: " + error_description)
-			return nil
-		}
+	} else if val, ok := respjson["error_description"]; ok {
+		error_description := val.(string)
+		log.Error().Msg("[!] Error: " + error_description)
 	}
 	return nil
 }

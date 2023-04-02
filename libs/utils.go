@@ -29,12 +29,10 @@ func ParseJWT(tokenstring string) map[string]interface{} {
 
 func Logging(filepath string) {
 	f, err := os.OpenFile(filepath, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0664)
-	if err != nil {
-		CheckErrors(err)
-	} else {
+	CheckErrors(err)
+	if err == nil {
 		writers := io.MultiWriter(zerolog.ConsoleWriter{Out: os.Stderr, TimeFormat: "02 Jan 2006 15:04:05"}, f)
 		log.Logger = log.Output(writers)
-		CheckErrors(err)
 	}
 }
 
