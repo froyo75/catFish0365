@@ -46,8 +46,8 @@ Microsoft OAuth Device Code Phishing:
  * [The Art of the Device Code Phish](https://0xboku.com/2021/07/12/ArtOfDeviceCodePhish.html)
 
 Framework to abuse Azure JSON Web Token (JWT):
- * [TokenTactics] (https://github.com/rvrsh3ll/TokenTactics)
- * [AADInternals] (https://github.com/Gerenios/AADInternals)
+ * [TokenTactics](https://github.com/rvrsh3ll/TokenTactics)
+ * [AADInternals](https://github.com/Gerenios/AADInternals)
 
 Mitigation & Detection methodology:
  * [Mitigation of Microsoft OAuth Device Code Phishing](https://www.optiv.com/insights/source-zero/blog/microsoft-365-oauth-device-code-flow-and-phishing)
