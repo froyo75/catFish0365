@@ -12,8 +12,6 @@
  * Step 4: the victim logs into his account
  * Step 5: The program polls the Azure AD for the authentication status until it gets his refresh and access tokens (successfull login) by requesting the [OAuth endpoint](https://login.microsoftonline.com/Common/oauth2/token?api-version=1.0)
 
-***[By default, the access_tokens are valid for 60 days and refresh_tokens are valid for a year](https://learn.microsoft.com/en-us/linkedin/shared/authentication/programmatic-refresh-tokens)***
-
 ## Usage
 ```shell
 Usage: catFish0365 <command>
