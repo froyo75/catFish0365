@@ -46,16 +46,20 @@ func ExploitDeviceCodeAuth(clientid string, resource string) {
 		access_token := tokens["access_token"].(string)
 		refresh_token := tokens["refresh_token"].(string)
 		jwtdata := ParseJWT(access_token)
-		log.Info().Msg("[+] TID: " + jwtdata["tid"].(string))
-		log.Info().Msg("[+] APPID: " + jwtdata["appid"].(string))
-		log.Info().Msg("[+] OID: " + jwtdata["oid"].(string))
-		log.Info().Msg("[+] AMR: " + strings.Trim(strings.Join(strings.Fields(fmt.Sprint(jwtdata["amr"])), ", "), "[]"))
-		log.Info().Msg("[+] UPN: " + jwtdata["upn"].(string))
-		log.Info().Msg("[+] NAME: " + jwtdata["name"].(string))
-		log.Info().Msg("[+] FAMILY NAME: " + jwtdata["family_name"].(string))
-		log.Info().Msg("[+] GIVEN NAME: " + jwtdata["given_name"].(string))
-		log.Info().Msg("[+] IP ADDRESS: " + jwtdata["ipaddr"].(string))
-		log.Info().Msg("[+] REGION: " + jwtdata["tenant_region_scope"].(string))
+		claims := []string{"tid", "appid", "oid", "amr", "upn", "name", "family_name", "given_name", "ipaddr", "tenant_region_scope"}
+		claim_value := ""
+		for _, claim := range claims {
+			if jwtdata[claim] != nil {
+				if claim == "amr" {
+					claim_value = strings.Trim(strings.Join(strings.Fields(fmt.Sprint(jwtdata[claim])), ", "), "[]")
+				} else {
+					claim_value = jwtdata[claim].(string)
+				}
+				log.Info().Msg("[+] " + strings.ToUpper(claim) + ": " + claim_value)
+			} else {
+				log.Info().Msg("[!] " + strings.ToUpper(claim) + ": None")
+			}
+		}
 		log.Info().Msg("[+] Access Token => " + access_token)
 		log.Info().Msg("[+] Refresh Token => " + refresh_token)
 	}
