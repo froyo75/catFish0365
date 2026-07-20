@@ -1,16 +1,17 @@
-# catFish0365
-
-<img src="images/catfish.png" width="300px">
-
-***`catFish0365` is a simple program to automate device code phishing attacks.***
+<p align="center" style="margin:0;">
+  <img src="./images/catfish.svg" width="180" />
+</p>
+<p align="center" style="margin-top:6px;">
+<b>A simple tool for automating device code phishing attacks.</b>
+</p>
 
 ## Attack Flow
 
- * Step 1: The program generates a user code by requesting the [Azure AD devicecode endpoint](https://login.microsoftonline.com/common/oauth2/devicecode?api-version=1.0)
- * Step 2: The user code is sent to the victim (e.g. phishing email sent to the victim)
- * Step 3: The victim opens phishing email and inputs the user code by visiting the [devicelogin url](https://microsoft.com/devicelogin)
- * Step 4: the victim logs into his account
- * Step 5: The program polls the Azure AD for the authentication status until it gets his refresh and access tokens (successfull login) by requesting the [OAuth endpoint](https://login.microsoftonline.com/Common/oauth2/token?api-version=1.0)
+ * **Step 1**: The program generates a user code by requesting the [Azure AD devicecode endpoint](https://login.microsoftonline.com/common/oauth2/devicecode?api-version=1.0)
+ * **Step 2**: The user code is sent to the victim (e.g. phishing email sent to the victim)
+ * **Step 3**: The victim opens phishing email and inputs the user code by visiting the [devicelogin url](https://microsoft.com/devicelogin)
+ * **Step 4**: the victim logs into his account
+ * **Step 5**: The program polls the Azure AD for the authentication status until it gets his refresh and access tokens (successfull login) by requesting the [OAuth endpoint](https://login.microsoftonline.com/Common/oauth2/token?api-version=1.0)
 
 ## Usage
 ```shell
